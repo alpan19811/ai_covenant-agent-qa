@@ -1,0 +1,35 @@
+{
+  "contract_id": "LOAN-2024-00158",
+  "expected_covenants": [
+    {
+      "covenant_id": "Cov-1",
+      "covenant_type": "financial",
+      "description": "Отношение Чистый Долг к EBITDA не должно превышать 3.0x на конец любого отчетного квартала",
+      "threshold_value": 3.0,
+      "metric_name": "Net Debt / EBITDA"
+    },
+    {
+      "covenant_id": "Cov-2",
+      "covenant_type": "non_financial",
+      "description": "Заёмщик обязан предоставлять ежеквартальную управленческую отчетность не позднее 45 дней после окончания квартала",
+      "threshold_value": null,
+      "metric_name": null
+    }
+  ],
+  "expected_validation_results": [
+    {
+      "covenant_id": "Cov-1",
+      "status": "Pass",
+      "actual_value": 2.4,
+      "llm_reasoning": "Фактическое значение Net Debt / EBITDA составляет 2.4x, что ниже порогового значения 3.0x. Ковенант соблюден."
+    },
+    {
+      "covenant_id": "Cov-2",
+      "status": "Warning",
+      "actual_value": null,
+      "llm_reasoning": "Отчетность была предоставлена на 50-й день. Формальное нарушение срока, требуется ручной анализ причин (Warning)."
+    }
+  ],
+  "expected_overall_status": "Manual Review",
+  "expected_summary": "Договор LOAN-2024-00158 содержит 2 ковенанта. Финансовый ковенант соблюден (2.4x < 3.0x). Выявлено предупреждение по срокам предоставления отчетности (Cov-2). Рекомендуется ручной анализ (Manual Review)."
+}
